@@ -1,0 +1,27 @@
+<div class="page-header">
+  <h1>
+    {{info.header || 'Welcome'}}&nbsp;<small>{{info.description}}</small>
+    <a class="site-config-btn" ng-if="isAdmin" ng-href="{{repoAddr}}?path=/config/root.yml&version=GB{{branch}}&_a=contents"
+      target="_blank" data-role="hint" data-hint-background="bg-green" data-hint-color="fg-white" data-hint="|site config">
+      <span class="mif-cog icon"></span>
+    </a>
+    <input ng-if="enableSearch" id="search-query" ng-model="search.keyword" ng-model-options="{ debounce: 200 }" type="text"
+      class="form-control search-bar" placeholder="Search" />
+  </h1>
+</div>
+<!-- announcement list -->
+<div ng-repeat="anno in info.announcement" ng-show="info.announcement.length">
+  <div class="alert alert-{{anno.type || 'info'}} alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+    <h4 ng-show="anno.title">
+      <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+      {{anno.title}}
+    </h4>
+    <p ng-if="anno.title">
+      {{anno.content}}
+    </p>
+    <strong ng-if="!anno.title">
+      <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+      {{anno.content}}
+    </strong>
+  </div>
+</div>

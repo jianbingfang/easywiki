@@ -1,0 +1,14 @@
+node_modules/
+bower_components/
+
+bin/*.dll
+
+.vs/
+.vscode/
+obj/
+typings/
+typings.json
+
+*.log
+
+public/js/index*.json

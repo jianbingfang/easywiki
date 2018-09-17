@@ -1,0 +1,38 @@
+# Configuration for DM wiki engine
+# 
+# For any problems please contact: Jesse Fang <jifang@microsoft.com>
+#
+# TODO:
+#   Support more types of document
+---
+version: 1.0
+admins:
+  - jifang
+application:
+  environment: azure
+  siteName: SEED
+  logo: img/slapi.png
+  repoAddr: https://msasg.visualstudio.com/Shared%20Data/_git/DM.SLAPI.wiki
+  branch: master
+  docRoot: /resources/docs
+  ariaToken: 
+  showContributeGuide: true
+  enableSearch: true
+# [info] is for bootstrap style layout
+info:
+  title: Wiki
+  header: Wiki
+  description: 
+  announcement: 
+    - content: Welcome to wiki :-)
+    # - title: Live site
+    #   content: There is a live site issue
+    #   type: danger # Optional, could be: success, info, warning, danger. Defualt: info.
+# NOTE:
+# The 'ref' of each tab MUST be UNIQUE!
+tabs:
+  - name: Basics
+    ref: basics
+    docs:
+      - type: markdown
+        src: basics.md

@@ -1,0 +1,9 @@
+#cell-sidebar.cell.size-x300(ng-controller='sidebarCtrl')
+  a(href='#', ui-sref='home', style='text-decoration: none')
+    .align-center(style='padding: 10px')
+      div
+        if logo
+          img(src='' + logo, style='width: 45px')
+        if siteName
+          .leader(style='color: white') #{siteName}
+  div(ng-include="'/views/sidebar.html'" ng-controller="sidebarCtrl")

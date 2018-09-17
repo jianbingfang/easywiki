@@ -1,0 +1,122 @@
+<!-- Doc Content -->
+<div class="doc-content-wrapper" ng-hide="showSearchResult">
+  <div ng-repeat="doc in docList track by $index">
+    <!-- Content -->
+    <div ng-switch on="doc.type" class="doc-manage-btn-group-wrapper">
+      <!-- code to render the table block -->
+      <div ng-class="{true: 'doc-manage-btn-group-empty-content', false: 'doc-manage-btn-group'}[doc.content.length == 0]" ng-show="!doc.error">
+        <a ng-href="{{repoAddr}}?path={{docRoot}}/{{doc.type}}/{{doc.filename}}&version=GB{{branch}}&_a=contents" target="_blank">
+          <span class="mif-file-archive" data-role="hint" data-hint-background="bg-green" data-hint-color="fg-white" data-hint-mode="2"
+            data-hint="|View Source"></span>
+        </a>
+        <a ng-href="{{repoAddr}}?path={{docRoot}}/{{doc.type}}/{{doc.filename}}&version=GB{{branch}}&_a=history" target="_blank">
+          <span class="mif-history" data-role="hint" data-hint-background="bg-green" data-hint-color="fg-white" data-hint-mode="2"
+            data-hint="|View History"></span>
+        </a>
+        <a ng-href="{{repoAddr}}?path={{docRoot}}/{{doc.type}}/{{doc.filename}}&version=GB{{branch}}&_a=contents&editMode=true" target="_blank">
+          <span class="mif-pencil" data-role="hint" data-hint-background="bg-green" data-hint-color="fg-white" data-hint-mode="2" data-hint="|Edit"></span>
+        </a>
+      </div>
+      <div ng-switch-when="table" style="padding-top: 18px;">
+        <table bs-table-control="tableControl[$index]" class=""></table>
+      </div>
+      <!-- code to render a markdown block-->
+      <div ng-switch-when="markdown">
+        <!-- Markdown Content -->
+        <div compile="doc.content | md2html"></div>
+      </div>
+      <div ng-switch-when="html">
+        <div ng-bind-html="doc.content | trustAsHtml"></div>
+      </div>
+      <div ng-switch-when="releaseHistory">
+        <div ng-include="'views/partial/release.html'"></div>
+      </div>
+      <!-- Error Message -->
+      <div class="alert alert-danger alert-dismissible fade in" role="alert" ng-show="doc.error">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <strong>Oops...</strong> <a ng-href="{{repoAddr}}?path={{docRoot}}/{{doc.type}}/{{doc.filename}}&version=GB{{branch}}&_a=contents">{{doc.filename}}</a>        is missing, please <a href="maito:slapidisc@microsoft.com" class="alert-link">contact us</a> for help :(
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Search Result -->
+<div id="search-results" ng-show="showSearchResult">
+  <div class="search-list">Search Results for "{{search.keyword}}"</div>
+  <div class="sr-items">
+    <div class="no-result" ng-if="search.hits.length === 0">
+      No results found.
+      <br/>
+      <div ng-hide="isNoSearchSuggestion()">
+        Did you try <a href="#" ng-click="reSearchKeyword()">{{search.keyword | splitWordsWithSpace}}</a>?
+      </div>
+    </div>
+    <div class="sr-item" ng-repeat="hit in search.hits | limitTo:numLimit">
+      <div ng-switch on="hit.type">
+        <div ng-switch-when="column">
+          <div class="item-title">
+            <a href="javascript:void(0)" ng-init="isCollapsed=true" ng-click="isCollapsed = !isCollapsed" popover-title="{{hit.title}}"
+              popover-class="column-popover" popover-placement="bottom" popover-append-to-body="false" ng-bind-html="hit.title | highlightKeyword:search.keyword | trustAsHtml">
+            </a>
+            <div class="icon-wrapper">
+              <span class="mif-lg" ng-class="isCollapsed ? 'mif-expand-more' : 'mif-expand-less'" style="color: #999;"></span>
+            </div>
+            <div uib-collapse="isCollapsed" class="collapse-detail">
+              <div ng-hide="detailLoaded">
+                <span class="mif-spinner5 mif-ani-spin"></span> Loading...
+              </div>
+              <div ng-include="hit.href" onload="detailLoaded=true"></div>
+            </div>
+          </div>
+        </div>
+        <div ng-switch-when="page">
+          <div class="item-title">
+            <a ng-href="{{hit.href}}?q={{search.keyword}}" target="_blank" ng-bind-html="hit.title | highlightKeyword:search.keyword | trustAsHtml"></a>
+            <div class="icon-wrapper">
+              <span class="mif-link mif-lg" style="color: #999;"></span>
+            </div>
+          </div>
+        </div>
+        <div class="item-href">{{hit.href | toAbsoluteUrl}}</div>
+        <div class="item-brief" ng-bind-html="hit.keywords | extractContentBrief:search.keyword | highlightKeyword:search.keyword | trustAsHtml"></div>
+      </div>
+    </div>
+    <button ng-disabled="numLimit>=search.hits.length" ng-click="numLimit=numLimit+10" type="button" class="btn btn-default" style="margin: 30px 0;width: 100%;">
+      {{ search.hits.length - numLimit > 0 ? (search.hits.length - numLimit) + " results rest, show me 20 more!" : "That's all, no more results..." }}
+    </button>
+  </div>
+</div>
+<!-- "How to contribute" modal -->
+<button ng-if="showContributeGuide" type="button" class="btn btn-primary" ng-class="hasBanner ? 'how-to-contribute-btn-under-banner' : 'how-to-contribute-btn'"
+  data-toggle="modal" data-target=".modal-contribute">How to contribute?</button>
+<div ng-if="showContributeGuide" class="modal fade modal-contribute" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content" style="background: #f7f7f7">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Few steps to help us improve SLAPI document!</h4>
+      </div>
+      <div class="modal-body">
+        <div class="doc-manage-btn-group-empty-content">
+          <a ng-href="{{repoAddr}}?path={{docRoot}}/markdown/HowToContribute.md&version=GB{{branch}}&_a=contents" target="_blank">
+            <span class="mif-file-archive" data-role="hint" data-hint-background="bg-green" data-hint-color="fg-white" data-hint-mode="2"
+              data-hint="|View Source"></span>
+          </a>
+          <a ng-href="{{repoAddr}}?path={{docRoot}}/markdown/HowToContribute.md&version=GB{{branch}}&_a=history" target="_blank">
+            <span class="mif-history" data-role="hint" data-hint-background="bg-green" data-hint-color="fg-white" data-hint-mode="2"
+              data-hint="|View History"></span>
+          </a>
+          <a ng-href="{{repoAddr}}?path={{docRoot}}/markdown/HowToContribute.md&version=GB{{branch}}&_a=contents&editMode=true" target="_blank">
+            <span class="mif-pencil" data-role="hint" data-hint-background="bg-green" data-hint-color="fg-white" data-hint-mode="2" data-hint="|Edit"></span>
+          </a>
+        </div>
+        <marked src="'/resources/docs/markdown/HowToContribute.md'">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

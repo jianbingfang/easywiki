@@ -1,0 +1,23 @@
+<a ng-if="isAdmin" ng-href="{{repoAddr}}?path=/config/root.yml&version=GBmaster&_a=contents" target="_blank" style="margin: -34px 0 10px 24px; display: block; font-size: 20px; color: grey" data-role="hint" data-hint-background="bg-green" data-hint-color="fg-white" data-hint="|site config">
+  <span class="mif-cog icon"></span>
+</a>
+
+<ul class="sidebar2 dark mySidebar">
+  <li ui-sref-active="active" ng-repeat="tab in tabs">
+    <!-- if no sub tabs -->
+    <div ng-if="!tab.subtabs">
+      <a href="#" ui-sref="{{tab.ref}}">
+        <span ng-if="tab.icon" class="mif-{{tab.icon}} icon"></span>{{tab.name}}
+      </a>
+    </div>
+    <!-- if some sub tabs -->
+    <div ng-if="tab.subtabs">
+      <a href="#" class="dropdown-toggle">
+        <span ng-if="tab.icon" class="mif-{{tab.icon}} icon"></span>{{tab.name}}
+      </a>
+      <ul data-role="dropdown" style="min-width: 100%" class="d-menu stay-open">
+        <li ng-repeat="subtab in tab.subtabs" ng-class="{active:$state.includes(subtab.ref)}"><a href="#" ui-sref="{{subtab.ref}}">{{subtab.name}}</a></li>
+      </ul>
+    </div>
+  </li>
+</ul>

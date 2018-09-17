@@ -1,0 +1,17 @@
+.nav-tabs .dropdown-toggle::before {
+  display: none;
+}
+
+.bootstrap-table tbody>tr.column-table-row>td:last-child div.row{
+  display: flex;
+}
+
+.site-config-btn .icon{
+  font-size: 24px; 
+  color:#d9d9d9;
+  display: none;
+}
+
+.page-header:hover .site-config-btn .icon{
+  display: inline-block;
+}

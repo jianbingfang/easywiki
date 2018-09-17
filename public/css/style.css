@@ -1,0 +1,259 @@
+body {
+  margin-right: 15px;
+}
+
+p {
+  line-height: 1.4;
+  font-size: initial;
+}
+
+blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 17.5px;
+  border-left: 0.25rem #999999 solid;
+  background: #ddd;
+}
+
+.search-bar {
+  width: 200px;
+  float: right;
+  margin-top: 3px;
+}
+
+.page-content {
+  min-height: 100%;
+  height: 100%;
+}
+
+.mySidebar {
+  border: 0px;
+  word-break: break-word;
+  max-width: 100%;
+  padding-left: 10px;
+}
+
+ul.mySidebar>li>a {
+  padding-right: 10px;
+}
+
+li ul.d-menu {
+  display: none;
+}
+
+ul.d-menu {
+  min-width: 100%;
+}
+
+.stay-open {
+  min-width: 100%;
+}
+
+ul.d-menu .active {
+  border-left: #ce352c;
+  border-left-width: 10px;
+  border-left-style: solid;
+}
+
+ul.d-menu .active a {
+  padding-left: 30px;
+}
+
+#cell-sidebar {
+  background-color: #323232;
+  height: 100%;
+}
+
+#cell-content {
+  position: relative;
+  overflow-y: scroll;
+}
+
+tr.info.groupBy {
+  color: black !important;
+  font-weight: bold !important;
+}
+
+.column-table-row p {
+  margin: 0 !important;
+}
+
+.column-table-row td {
+  vertical-align: middle !important;
+}
+
+.column-table-row-no-detail .detail-icon {
+  display: none !important;
+}
+
+.accordion .frame .heading {
+  text-transform: unset;
+}
+
+.bootstrap-table tbody p {
+  font-size: 14px;
+}
+
+.bootstrap-table thead>tr>th.detail,
+.bootstrap-table tbody>tr:not(.detail-view)>td:first-of-type {
+  display: none;
+}
+
+.bootstrap-table thead>tr>th:nth-child(2),
+.bootstrap-table tbody>tr:not(.detail-view)>td:nth-child(2) {
+  border-left: none !important;
+}
+
+
+/*
+.bootstrap-table tbody>tr:not(.detail-view)>td:nth-child(3) {
+  width: 180px !important;
+  max-width: 350px !important;
+}
+*/
+
+.bootstrap-table tbody>tr:not(.detail-view)>td:nth-child(4) {
+  width: 180px !important;
+  max-width: 180px !important;
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.bootstrap-table tbody>tr.column-table-row>td:last-child i.expand-icon {
+  color: #2086bf;
+  margin: -4px 5px 0 -5px;
+}
+
+.bootstrap-table tr.detail-view {
+  background: aliceblue !important;
+}
+
+.bootstrap-table tr.detail-view td {
+  padding: 20px !important;
+  border-width: 2px 4px 2px 3px !important;
+  border-style: solid !important;
+  border-color: #59cde2 !important;
+}
+
+.bootstrap-table tr.detail-view .arrow-up {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #59cde2;
+  float: right;
+  margin-top: -31px;
+  margin-right: 100px;
+}
+
+.bootstrap-table div.fixed-table-body {
+  overflow-x: hidden;
+}
+
+.bootstrap-table button.btn.btn-default.dropdown-toggle {
+  width: 60px;
+}
+
+.bootstrap-table button.btn.btn-default.dropdown-toggle::before {
+  display: none;
+}
+
+.column-popover {
+  min-width: 500px;
+  max-width: 800px;
+}
+
+.doc-manage-btn-group {
+  float: right;
+  visibility: hidden;
+}
+
+.doc-manage-btn-group-empty-content {
+  float: right;
+  visibility: visible;
+}
+
+.doc-manage-btn-group-wrapper:hover .doc-manage-btn-group {
+  visibility: visible;
+}
+
+.popover-doc-manage-btn-group {
+  float: right;
+  visibility: hidden;
+}
+
+.popover-inner:hover .popover-doc-manage-btn-group {
+  visibility: visible;
+}
+
+.modal-contribute {
+  margin-top: 50px;
+}
+
+.how-to-contribute-btn {
+  position: fixed;
+  top: -4px;
+  right: 30px;
+}
+
+.how-to-contribute-btn-under-banner {
+  position: fixed;
+  top: 47px;
+  right: 30px;
+}
+
+#search-results {
+  line-height: 1.5;
+}
+
+#search-results .search-list {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 30px;
+}
+
+#search-results .sr-items .no-result {
+  font-size: 24px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+#search-results .sr-items .sr-item {
+  margin-top: 10px;
+}
+
+#search-results .sr-items .sr-item .item-title > a {
+  color: #337ab7;
+  cursor: pointer;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+#search-results .sr-items .sr-item .item-href {
+  font-size: 14px;
+  color: #093;
+}
+
+#search-results .sr-items .sr-item .icon-wrapper {
+  display: inline-flex;
+  margin-left: 5px;
+}
+
+#search-results .sr-items .sr-item .highlight-keyword {
+  background: #FFEB3B;
+  display: inline;
+  padding: 2px;
+}
+
+#search-results .collapse-detail {
+  background: aliceblue;
+  padding: 10px 20px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #59cde2;
+}
+
+.doc-content-wrapper mark {
+  background: #fff7ca;
+  padding: 0;
+}

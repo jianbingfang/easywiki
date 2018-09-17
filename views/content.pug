@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  .page-content
+    .flex-grid.no-responsive-future(style='height: 100%;')
+      .row.wrap(style='height: 100%;')
+        include sidebar.pug
+        #cell-content.cell.auto-size.padding20.bg-white
+          ui-view

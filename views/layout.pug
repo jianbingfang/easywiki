@@ -1,0 +1,62 @@
+﻿doctype html
+html
+  head
+    base(href='/')
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='referrer' content='origin')
+
+    title= title
+    link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/bower_components/bootstrap-table/dist/bootstrap-table.min.css')
+    link(rel='stylesheet', href='/bower_components/bootstrap-table/dist/extensions/group-by-v2/bootstrap-table-group-by.css')
+    link(rel='stylesheet', href='/bower_components/ngprogress/ngProgress.css')
+    link(rel='stylesheet', href='/bower_components/toastr/toastr.min.css')
+    link(rel='stylesheet', href='/vendor/metroui/css/metro.css')
+    link(rel='stylesheet', href='/vendor/metroui/css/metro-icons.min.css')
+    link(rel='stylesheet', href='/vendor/highlight/default.min.css')
+    link(rel='stylesheet', href='/css/style.css')
+    link(rel='stylesheet', href='/css/style.bs.css')
+    if banner
+      link(rel='stylesheet', href='https://sdcdn.azurewebsites.net/BannerStyle.css?q=1')
+  body
+    if banner
+      #dvBanner(data-productname=banner.productname data-ariatenantid=ariaToken userAlias=alias showfeedback='false' showsetting='false' showhelp='false')
+    block content
+
+    script(src='/bower_components/jquery/dist/jquery.min.js')
+    script(src='/bower_components/bootstrap/dist/js/bootstrap.min.js')
+    script(src='/bower_components/angular/angular.min.js')
+    script(src='/bower_components/angular-route/angular-route.min.js')
+    script(src='/bower_components/angular-sanitize/angular-sanitize.min.js')
+    script(src='/bower_components/angular-ui-router/release/angular-ui-router.min.js')
+    script(src='/bower_components/angular-deferred-bootstrap/angular-deferred-bootstrap.min.js')
+    script(src='/bower_components/angular-marked/dist/angular-marked.min.js')
+    script(src='/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js')
+    script(src='/bower_components/bootstrap-table/dist/bootstrap-table.min.js')
+    script(src='/bower_components/bootstrap-table/dist/extensions/angular/bootstrap-table-angular.min.js')
+    script(src='/bower_components/bootstrap-table/dist/extensions/group-by-v2/bootstrap-table-group-by.min.js')
+    script(src='/bower_components/ngprogress/build/ngprogress.min.js')
+    script(src='/bower_components/marked/lib/marked.js')
+    script(src="/bower_components/toastr/toastr.min.js")
+    script(src="/bower_components/mark.js/dist/mark.min.js")
+    if enableSearch
+      script(src="/bower_components/lunr.js/lunr.min.js")
+    script(src='/vendor/highlight/highlight.min.js')
+    script(src='/vendor/metroui/js/metro.js')
+    script(src='https://sdcdn.azurewebsites.net/aria-web-telemetry-2.4.2.min.js')
+    if banner
+      script(src='https://sdcdn.azurewebsites.net/Banner.js?q=1')
+    script(src='/js/ng/init.js')
+    script(src='/js/ng/service/docService.js')
+    script(src='/js/ng/service/searchService.js')
+    if banner
+      script(src="/js/ng/service/ariaLogger-fromBanner.js")
+    else if ariaToken
+      script(src="/js/ng/service/ariaLogger.js")
+    script(src='/js/ng/filter/filters.js')
+    script(src='/js/ng/directive/directives.js')
+    script(src="/js/ng/search.js")
+    script(src='/js/ng/controller/docCtrl.js')
+    script(src='/js/ng/controller/sidebarCtrl.js')
+    script(src='/js/ng/controller/headerCtrl.js')
