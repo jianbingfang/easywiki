@@ -1,14 +1,15 @@
 {
-  "name": "dm.slapi.wiki",
-  "version": "0.0.0",
-  "private": true,
+  "name": "easywiki",
+  "version": "1.0.0",
+  "private": false,
   "scripts": {
     "start": "node ./bin/www",
     "postinstall": "bower install && gulp"
   },
-  "description": "DM.SLAPI.wiki",
+  "description": "A lightweight configurable wiki site based on Markdown",
   "author": {
-    "name": "jifang"
+    "name": "jianbingfang",
+    "email": "jianbingfang@qq.com"
   },
   "dependencies": {
     "body-parser": "~1.8.1",

@@ -1,13 +1,12 @@
 {
-  "name": "dm.slapi.wiki",
-  "description": "DM.SLAPI.wiki",
+  "name": "easywiki",
   "main": "",
   "authors": [
-    "jifang"
+    "jianbingfang"
   ],
   "license": "MIT",
   "moduleType": [],
-  "homepage": "",
+  "homepage": "https://github.com/jianbingfang/easywiki",
   "private": true,
   "ignore": [
     "**/.*",
